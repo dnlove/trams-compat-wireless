@@ -161,15 +161,16 @@ endif #CONFIG_COMPAT_KERNEL_2_6_33
 # CONFIG_MAC80211_DEBUG_COUNTERS=y
 
 # choose between pid and minstrel as default rate control algorithm
-export CONFIG_MAC80211_RC_DEFAULT=minstrel_ht
+export CONFIG_MAC80211_RC_DEFAULT=trams_ht
 export CONFIG_MAC80211_RC_DEFAULT_MINSTREL=y
 # CONFIG_MAC80211_RC_DEFAULT_PID=y
 # This is the one used by our compat-wireless net/mac80211/rate.c
 # in case you have and old kernel which is overriding this to pid.
-export CONFIG_COMPAT_MAC80211_RC_DEFAULT=minstrel_ht
+export CONFIG_COMPAT_MAC80211_RC_DEFAULT=trams_ht
 export CONFIG_MAC80211_RC_PID=y
 export CONFIG_MAC80211_RC_MINSTREL=y
 export CONFIG_MAC80211_RC_MINSTREL_HT=y
+export CONFIG_MAC80211_RC_TRAMS_HT=y
 ifdef CONFIG_LEDS_TRIGGERS
 export CONFIG_MAC80211_LEDS=y
 endif #CONFIG_LEDS_TRIGGERS

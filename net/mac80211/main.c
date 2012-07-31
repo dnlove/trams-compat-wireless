@@ -1076,6 +1076,10 @@ static int __init ieee80211_init(void)
 	if (ret)
 		goto err_pid;
 
+	ret = rc80211_trams_ht_init();
+	if (ret)
+		goto err_trams;
+
 	ret = ieee80211_iface_init();
 	if (ret)
 		goto err_netdev;
@@ -1087,6 +1091,8 @@ static int __init ieee80211_init(void)
 	rc80211_minstrel_ht_exit();
  err_minstrel:
 	rc80211_minstrel_exit();
+ err_trams:
+	rc80211_trams_ht_exit();
 
 	return ret;
 }
@@ -1096,6 +1102,7 @@ static void __exit ieee80211_exit(void)
 	rc80211_pid_exit();
 	rc80211_minstrel_ht_exit();
 	rc80211_minstrel_exit();
+	rc80211_trams_ht_exit();
 
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(2,6,37))
 	flush_scheduled_work();
